@@ -1,6 +1,6 @@
 // Update with your config settings.
 
-require('dot-env').config({ path : './.env' });
+require('dotenv').config({ path : './.env' });
 
 module.exports = {
     client: 'postgresql',
