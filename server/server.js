@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const LocalStrategy = require('passport-local');
 const redis = require('connect-redis')(session);
 
 const PORT = process.env.EXPRESS_CONTAINER_PORT;
@@ -11,6 +12,9 @@ const PROJECT_ENV = process.env.PROJECT_ENV;
 const SESSION_SECRET = process.env.SESSION_SECRET;
 
 const routesMain = require('./routes/main');
+const routesUsers = require('./routes/users');
+const routesAuth = require('./routes/users/auth');
+const routesContacts = require('./routes/contacts');
 
 const app = express();
 
@@ -60,7 +64,7 @@ passport.serializeUser((user, done) => {
 
 // deserializeUser happens after every request
 passport.deserializeUser((user, done) => {
-  new user({ id : user.id }).fetch()
+  new User({ id : user.id }).fetch()
     .then(user => {
       user = user.toJSON();
       return done(null, {
@@ -85,6 +89,9 @@ app.get('/secret', isAuthenticated, (req, res) => {
 })
 
 app.use(routesMain);
+app.use('/api', routesUsers);
+app.use('/api', routesAuth);
+app.use('/api/contacts', routesContacts);
 
 app.listen(PORT, () => {
   console.log(`Server listening in on port: ${ PORT }`);
