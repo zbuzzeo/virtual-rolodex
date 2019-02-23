@@ -10,7 +10,6 @@ router.get('/profile', (req, res) => {
 
   User.where({ 'id' : id }).fetch()
     .then(fetched => {
-
       fetched = fetched.attributes;
       res.json(fetched);
     })
@@ -25,6 +24,11 @@ router.get('/profile', (req, res) => {
 router.put('/users', (req, res) => {
   const id = req.query.user;
   const userData = req.body;
+
+  res.json({
+    success : false,
+    message : 'This route is not ready for you yet!'
+  });
 });
 
 module.exports = router;

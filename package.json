@@ -1,7 +1,6 @@
 {
   "name": "ng-rolodex",
   "version": "0.0.0",
-  "proxy": "http://localhost:8080",
   "scripts": {
     "dev": "./node_modules/nodemon/bin/nodemon.js ./server/server.js",
     "ng": "ng",

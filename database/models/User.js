@@ -7,7 +7,7 @@ class User extends bookshelf.Model {
   get hasTimestamps() { return true; }
 
   contacts() {
-    return this.hasMany(Contact, 'created_by');
+    return this.hasMany('Contact', 'created_by');
   }
 }
 

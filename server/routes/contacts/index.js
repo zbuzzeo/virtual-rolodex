@@ -43,6 +43,11 @@ router.get('/:id', (req, res) => {
 router.get('/search/:term', (req, res) => {
   const term = req.query.term;
   const id = req.query.user;
+
+  res.json({
+    success : false,
+    message : 'This route is not ready for you yet!'
+  });
 });
 
 router.post('/', (req, res) => {
@@ -72,10 +77,20 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   const id = req.params.id;
+
+  res.json({
+    success : false,
+    message : 'This route is not ready for you yet!'
+  });
 });
 
 router.delete('/:id', (req, res) => {
   const id = req.params.id;
+
+  res.json({
+    success : false,
+    message : 'This route is not ready for you yet!'
+  });
 });
 
 module.exports = router;
