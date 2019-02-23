@@ -2,7 +2,6 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const LocalStrategy = require('passport-local');
 const redis = require('connect-redis')(session);
 
 const PORT = process.env.EXPRESS_CONTAINER_PORT;
@@ -11,7 +10,6 @@ const REDIS_HOST_PORT = process.env.REDIS_HOST_PORT;
 const PROJECT_ENV = process.env.PROJECT_ENV;
 const SESSION_SECRET = process.env.SESSION_SECRET;
 
-const routesMain = require('./routes/main');
 const routesUsers = require('./routes/users');
 const routesAuth = require('./routes/users/auth');
 const routesContacts = require('./routes/contacts');
@@ -88,7 +86,6 @@ app.get('/secret', isAuthenticated, (req, res) => {
   res.send('you found the secret!');
 })
 
-app.use(routesMain);
 app.use('/api', routesUsers);
 app.use('/api', routesAuth);
 app.use('/api/contacts', routesContacts);
