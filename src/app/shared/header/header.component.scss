@@ -1,1 +1,37 @@
+@import '../../../../sass/config';
 
+.headWrapper {
+  background-color: $secondary-background-color;
+  .listWrapper {
+    display: flex;
+    height: 100%;
+
+    .smokester {
+      color: $secondary-font-color;
+      font-family: $primary-font, $font-type;
+      font-size: 1.6em;
+      font-weight: 600;
+      padding: 0.8em;
+      height: fit-content;
+      letter-spacing: $title-spacing;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+
+      .toProfile {
+        
+      }
+
+      .toContacts {
+
+      }
+
+      .toProfile, .toContacts {
+        color: $secondary-font-color;
+        text-decoration: none;
+      }
+    }
+  }
+}
